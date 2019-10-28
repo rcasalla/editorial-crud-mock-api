@@ -6,6 +6,7 @@ import { EditorialListComponent } from './editorial-list/editorial-list.componen
 import { EditorialService } from './editorial.service';
 import { FormsModule } from '@angular/forms';
 import { EditorialDetailComponent } from './editorial-detail/editorial-detail.component';
+import { EditorialCreateComponent } from './editorial-create/editorial-create.component';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { EditorialDetailComponent } from './editorial-detail/editorial-detail.co
         FormsModule,
         AppRoutingModule
     ],
-    declarations: [EditorialListComponent, EditorialDetailComponent],
+    declarations: [EditorialListComponent, EditorialDetailComponent, EditorialCreateComponent],
     providers: [EditorialService],
     exports:[EditorialListComponent]
 })
