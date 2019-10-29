@@ -40,7 +40,7 @@ export class EditorialCreateComponent implements OnInit {
 
   showSuccess() {
     for (let i = 0; i < this.editoriales.length; i++){
-      console.log(this.editoriales[i].id+' '+this.editoriales[i].name+' '+this.editoriales[i].address);
+      console.log(this.editoriales[i].id+' '+this.editoriales[i].name);
     }
     this.toastr.success("Editoriale", "Creado exitosamente!", {"progressBar": true,timeOut:4000});
    

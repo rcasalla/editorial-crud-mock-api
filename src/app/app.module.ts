@@ -1,6 +1,8 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -17,6 +19,8 @@ import { InMemoryEditorialService } from './in-memory-editorial.service';
         BrowserModule,
         HttpClientModule,
          HttpClientInMemoryWebApiModule.forRoot(InMemoryEditorialService, {delay : 100}),
+         BrowserAnimationsModule,
+         ToastrModule.forRoot(), // ToastrModule added
         AppRoutingModule,
         EditorialModule
     ],
