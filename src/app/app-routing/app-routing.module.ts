@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { EditorialDetailComponent } from '../editorial/editorial-detail/editorial-detail.component';
 import { EditorialListComponent } from '../editorial/editorial-list/editorial-list.component';
+import { EditorialCreateComponent } from '../editorial/editorial-create/editorial-create.component';
+
 
 const routes: Routes = [
 
@@ -11,6 +13,10 @@ const routes: Routes = [
     children: [{
       path: 'list',
       component: EditorialListComponent
+    },
+    {
+      path: 'add',
+      component: EditorialCreateComponent
     },
     {
       path: ':id',
