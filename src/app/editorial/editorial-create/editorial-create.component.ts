@@ -47,7 +47,7 @@ export class EditorialCreateComponent implements OnInit {
   }
   ngOnInit() {
     this.editorialService
-      .getEditoriales()
+      .getEditorials()
       .subscribe(editoriales => (this.editoriales = editoriales));
   }
 }

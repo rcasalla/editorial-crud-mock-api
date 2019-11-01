@@ -1,35 +1,46 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Editorial } from "./editorial";
-import { EditorialDetail } from "./editorial-detail";
-import { Observable } from "rxjs";
 
-/**
- * The service provider for everything related to editorials
- */
-@Injectable()
+import { Observable, of } from "rxjs";
+import { catchError, map, tap } from "rxjs/operators";
+
+import { Editorial } from "./editorial";
+
+@Injectable({ providedIn: "root" })
 export class EditorialService {
-  private editorialsUrl = "api/editorials"; // URL to web api
+  private editorialesUrl = "api/editorials"; // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
   };
-  /**
-   * Constructor of the service
-   * @param http The HttpClient - This is necessary in order to perform requests
-   */
+
   constructor(private http: HttpClient) {}
 
+  /** GET editoriales from the server */
   getEditorials(): Observable<Editorial[]> {
-    return this.http.get<Editorial[]>(this.editorialsUrl);
+    return this.http.get<Editorial[]>(this.editorialesUrl);
   }
 
-  /**
-   * Returns the Observable object containing the editorial retrieved from the API
-   * @returns The editorial
-   */
-  getEditorialDetail(editorialId): Observable<EditorialDetail> {
-    const url = `${this.editorialsUrl}/${editorialId}`;
-    return this.http.get<EditorialDetail>(url);
+  /** GET editorial by id. Will 404 if id not found */
+  getEditorialDetail(id: number): Observable<Editorial> {
+    const url = `${this.editorialesUrl}/${id}`;
+    return this.http.get<Editorial>(url);
+  }
+  /** POST: add a new editorial to the server */
+  createEditorial(editorial: Editorial): Observable<Editorial> {
+    return this.http.post<Editorial>(this.editorialesUrl, editorial, this.httpOptions).pipe(tap((editorial: Editorial) => console.log(`added editorial w/ ${editorial.name} id=${editorial.id}`)));
+  }
+
+  /** DELETE: delete the editorial from the server */
+  deleteEditorial(editorial: Editorial | number): Observable<Editorial> {
+    const id = typeof editorial === "number" ? editorial : editorial.id;
+    const url = `${this.editorialesUrl}/${id}`;
+
+    return this.http.delete<Editorial>(url, this.httpOptions);
+  }
+
+  /** PUT: update the editorial on the server */
+  updateEditorial(editorial: Editorial): Observable<any> {
+    return this.http.put(this.editorialesUrl, editorial, this.httpOptions);
   }
 }
