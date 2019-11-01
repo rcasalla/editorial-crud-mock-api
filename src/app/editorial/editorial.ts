@@ -12,6 +12,8 @@ export class Editorial {
     * The editorial's name
     */
     name: string;
+
+    description: string;
   
 
 }

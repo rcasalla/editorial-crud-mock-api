@@ -9,12 +9,12 @@
 			<tbody>
 				<tr *ngFor="let i of editorials">
 					<td style="cursor: pointer;">
-						<a class="figure-caption" [routerLink] ="['/editorials', { outlets: { 'detail': [i.id] } }]" >{{i.name}}</a>
+						<a class="figure-caption" [routerLink] ="['/editorials', { outlets: { 'right': [i.id] } }]" >{{i.name}}</a>
 					</td>
 
 				</tr>
 			</tbody>
 		</table>
 	</div>
-<app-editorial-create></app-editorial-create>
+
 </div>
