@@ -23,7 +23,7 @@ export class EditorialCreateComponent implements OnInit {
   ) {
     this.editorialForm = this.formBuilder.group({
       name: ["", [Validators.required, Validators.minLength(2)]],
-      address: ["", Validators.required]
+      description: ["", Validators.required]
     });
   }
 
@@ -42,7 +42,7 @@ export class EditorialCreateComponent implements OnInit {
     for (let i = 0; i < this.editoriales.length; i++){
       console.log(this.editoriales[i].id+' '+this.editoriales[i].name);
     }
-    this.toastr.success("Editoriale", "Creado exitosamente!", {"progressBar": true,timeOut:4000});
+    this.toastr.success("Editorial", "Creado exitosamente!", {"progressBar": true,timeOut:4000});
    
   }
   ngOnInit() {

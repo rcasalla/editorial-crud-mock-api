@@ -4,7 +4,7 @@ import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { EditorialListComponent } from './editorial-list/editorial-list.component';
 
 import { EditorialService } from './editorial.service';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { EditorialDetailComponent } from './editorial-detail/editorial-detail.component';
 import { EditorialCreateComponent } from './editorial-create/editorial-create.component';
 
@@ -12,7 +12,7 @@ import { EditorialCreateComponent } from './editorial-create/editorial-create.co
 @NgModule({
     imports: [       
         CommonModule,
-        FormsModule,
+        ReactiveFormsModule,
         AppRoutingModule
     ],
     declarations: [EditorialListComponent, EditorialDetailComponent, EditorialCreateComponent],
